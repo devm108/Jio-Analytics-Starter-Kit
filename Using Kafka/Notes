@@ -5,4 +5,5 @@ Project Langauge Level 8
 
 
 ##list of commands is available at:
-./kafka-console-producer.sh
+./kafka-console-producer.sh  ## for producer
+./kafka-console-consumer.sh  ## for consumer
