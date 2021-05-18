@@ -1,3 +1,8 @@
 Requirements: IntelliJ, Docker, Terminal
 JDK 15 
 Project Langauge Level 8
+
+
+
+##list of commands is available at:
+./kafka-console-producer.sh
