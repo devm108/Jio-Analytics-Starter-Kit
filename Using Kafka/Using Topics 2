@@ -1,0 +1,111 @@
+Last login: Fri May 21 14:33:01 on console
+devmittal@Devs-MacBook-Air ~ % cd Documents
+devmittal@Devs-MacBook-Air Documents % cd Ex_Files_Apache_Kafka
+devmittal@Devs-MacBook-Air Ex_Files_Apache_Kafka % docker-compose -f kafka-single-node.yml up -d
+Docker Compose is now in the Docker CLI, try `docker compose up`
+
+Starting zookeeper ... done
+Starting kafka-broker ... done
+devmittal@Devs-MacBook-Air Ex_Files_Apache_Kafka % docker exec -it kafka-broker /bin/bash
+Error response from daemon: Container 217a0d1fbf8d2380898fb695e5a0c97bbf99c3c921c5247742486f98103a71a5 is not running
+devmittal@Devs-MacBook-Air Ex_Files_Apache_Kafka % docker ps
+CONTAINER ID   IMAGE                      COMMAND                  CREATED      STATUS              PORTS                                                                     NAMES
+193325cb9eee   bitnami/zookeeper:latest   "/opt/bitnami/script…"   3 days ago   Up About a minute   2888/tcp, 3888/tcp, 0.0.0.0:2181->2181/tcp, :::2181->2181/tcp, 8080/tcp   zookeeper
+devmittal@Devs-MacBook-Air Ex_Files_Apache_Kafka % docker exec -it kafka-broker /bin/bash
+Error response from daemon: Container 217a0d1fbf8d2380898fb695e5a0c97bbf99c3c921c5247742486f98103a71a5 is not running
+devmittal@Devs-MacBook-Air Ex_Files_Apache_Kafka % ./kafka-topics.sh \
+            --zookeeper zookeeper:2181 \
+            --create \
+            --topic kafka.learning.orders \
+            --partitions 3 \
+            --replication-factor 1
+zsh: no such file or directory: ./kafka-topics.sh
+devmittal@Devs-MacBook-Air Ex_Files_Apache_Kafka % docker exec -it kafka-broker /bin/bash
+Error response from daemon: Container 217a0d1fbf8d2380898fb695e5a0c97bbf99c3c921c5247742486f98103a71a5 is not running
+devmittal@Devs-MacBook-Air Ex_Files_Apache_Kafka % ./kafka-topics.sh \
+            --zookeeper zookeeper:2181 \
+            --create \
+            --topic kafka.learning.orders \
+            --partitions 3 \
+            --replication-factor 1
+zsh: no such file or directory: ./kafka-topics.sh
+devmittal@Devs-MacBook-Air Ex_Files_Apache_Kafka % docker ps
+CONTAINER ID   IMAGE                      COMMAND                  CREATED      STATUS         PORTS                                                                     NAMES
+193325cb9eee   bitnami/zookeeper:latest   "/opt/bitnami/script…"   3 days ago   Up 6 minutes   2888/tcp, 3888/tcp, 0.0.0.0:2181->2181/tcp, :::2181->2181/tcp, 8080/tcp   zookeeper
+devmittal@Devs-MacBook-Air Ex_Files_Apache_Kafka % docker exec -it kafka-broker /bin/bash
+Error response from daemon: Container 217a0d1fbf8d2380898fb695e5a0c97bbf99c3c921c5247742486f98103a71a5 is not running
+devmittal@Devs-MacBook-Air Ex_Files_Apache_Kafka % docker exec -it kafka-broker /bin/bash
+I have no name!@217a0d1fbf8d:/$ ./kafka-topics.sh \
+>             --zookeeper zookeeper:2181 \
+>             --create \
+>             --topic kafka.learning.orders \
+>             --partitions 3 \
+>             --replication-factor 1
+bash: ./kafka-topics.sh: No such file or directory
+I have no name!@217a0d1fbf8d:/$ clear
+bash: clear: command not found
+I have no name!@217a0d1fbf8d:/$ clr
+bash: clr: command not found
+I have no name!@217a0d1fbf8d:/$ cls
+bash: cls: command not found
+I have no name!@217a0d1fbf8d:/$ ./kafka-topics.sh \
+> >             --zookeeper zookeeper:2181 \
+> >             --create \
+> >             --topic kafka.learning.orders \
+> >             --partitions 3 \
+> >             --replication-factor 1
+bash: --zookeeper: Permission denied
+I have no name!@217a0d1fbf8d:/$ ./kafka-topics.sh \
+> --zookeeper zookeeper:2181 \
+> --create \
+> --topic kafka.learning.orders \
+> --partitions 3 \
+> --replication-factor 1
+bash: ./kafka-topics.sh: No such file or directory
+I have no name!@217a0d1fbf8d:/$ cd bin      
+I have no name!@217a0d1fbf8d:/bin$ cd..
+bash: cd..: command not found
+I have no name!@217a0d1fbf8d:/bin$ cd opt/bitnami/kafka
+bash: cd: opt/bitnami/kafka: No such file or directory
+I have no name!@217a0d1fbf8d:/bin$ cd
+I have no name!@217a0d1fbf8d:/$ cd opt/bitnami/kafka
+I have no name!@217a0d1fbf8d:/opt/bitnami/kafka$ cd bin
+I have no name!@217a0d1fbf8d:/opt/bitnami/kafka/bin$ ./kafka-topics.sh \
+>             --zookeeper zookeeper:2181 \
+>             --create \
+>             --topic kafka.learning.orders \
+>             --partitions 3 \
+>             --replication-factor 1
+WARNING: Due to limitations in metric names, topics with a period ('.') or underscore ('_') could collide. To avoid issues it is best to use either, but not both.
+Created topic kafka.learning.orders.
+I have no name!@217a0d1fbf8d:/opt/bitnami/kafka/bin$ ./kafka-topics.sh \
+>             --zookeeper zookeeper:2181 \
+>             --topic kafka.learning.orders \
+>             --describe
+Topic: kafka.learning.orders	TopicId: WuUo4yQXRA-xM4jm7kAgpQ	PartitionCount: 3	ReplicationFactor: 1	Configs: 
+	Topic: kafka.learning.orders	Partition: 0	Leader: 1001	Replicas: 1001	Isr: 1001
+	Topic: kafka.learning.orders	Partition: 1	Leader: 1001	Replicas: 1001	Isr: 1001
+	Topic: kafka.learning.orders	Partition: 2	Leader: 1001	Replicas: 1001	Isr: 1001
+I have no name!@217a0d1fbf8d:/opt/bitnami/kafka/bin$ ./kafka-console-producer.sh \
+>             --bootstrap-server localhost:29092 \
+>             --property "parse.key=true" \
+>             --property "key.separator=:" \
+>             --topic kafka.learning.orders
+>1001:"Mouse,23.05"
+>1002:"Keyboard,10.00"
+>^C$ cd /bitnami/kafka/data
+org.apache.kafka.common.KafkaException: No key found on line 3: ^C$ cd /bitnami/kafka/data
+	at kafka.tools.ConsoleProducer$LineMessageReader.readMessage(ConsoleProducer.scala:292)
+	at kafka.tools.ConsoleProducer$.main(ConsoleProducer.scala:51)
+	at kafka.tools.ConsoleProducer.main(ConsoleProducer.scala)
+I have no name!@217a0d1fbf8d:/opt/bitnami/kafka/bin$ ./kafka-console-consumer.sh \
+>             --bootstrap-server localhost:29092 \
+>             --topic kafka.learning.orders \
+>             --group test-consumer-group \
+>             --property print.key=true \
+>             --property key.separator=" = " \
+>             --from-beginning
+1001 = "Mouse,23.05"
+1002 = "Keyboard,10.00"
+^CProcessed a total of 2 messages
+I have no name!@217a0d1fbf8d:/opt/bitnami/kafka/bin$ 
