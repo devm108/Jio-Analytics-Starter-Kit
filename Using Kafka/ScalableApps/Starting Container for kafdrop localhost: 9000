@@ -1,0 +1,33 @@
+devmittal@Devs-MacBook-Air ExerciseFiles % docker-compose -f kafka-cluster.yml up -d
+
+Docker Compose is now in the Docker CLI, try `docker compose up`
+
+Creating zookeeper ... error
+
+ERROR: for zookeeper  Cannot create container for service zookeeper: Conflict. The container name "/zookeeper" is already in use by container "193325cb9eeed4c1cfa3df5564d8fe78534c86fd8fc99e9bc42a8dc17210c090". You have to remove (or rename) that container to be able to reuse that name.
+
+ERROR: for zookeeper  Cannot create container for service zookeeper: Conflict. The container name "/zookeeper" is already in use by container "193325cb9eeed4c1cfa3df5564d8fe78534c86fd8fc99e9bc42a8dc17210c090". You have to remove (or rename) that container to be able to reuse that name.
+ERROR: Encountered errors while bringing up the project.
+devmittal@Devs-MacBook-Air ExerciseFiles % docker rm /zookeeper
+/zookeeper
+devmittal@Devs-MacBook-Air ExerciseFiles % docker-compose -f kafka-cluster.yml up -d
+
+Docker Compose is now in the Docker CLI, try `docker compose up`
+
+Creating zookeeper ... done
+Creating kafka-broker1 ... done
+Creating kafka-broker3 ... done
+Creating kafka-broker2 ... done
+Creating kafdrop       ... done
+devmittal@Devs-MacBook-Air ExerciseFiles % docker ps
+CONTAINER ID   IMAGE                             COMMAND                  CREATED          STATUS          PORTS                                                                                                NAMES
+d391d79622c4   obsidiandynamics/kafdrop:latest   "/kafdrop.sh"            15 seconds ago   Up 11 seconds   0.0.0.0:9000->9000/tcp, :::9000->9000/tcp                                                            kafdrop
+16ecb583f7c6   bitnami/kafka:latest              "/opt/bitnami/script…"   25 seconds ago   Up 17 seconds   0.0.0.0:9092->9092/tcp, :::9092->9092/tcp, 0.0.0.0:29092->29092/tcp, :::29092->29092/tcp             kafka-broker1
+8f358776d132   bitnami/kafka:latest              "/opt/bitnami/script…"   25 seconds ago   Up 16 seconds   0.0.0.0:9094->9094/tcp, :::9094->9094/tcp, 9092/tcp, 0.0.0.0:29094->29094/tcp, :::29094->29094/tcp   kafka-broker3
+3d9e3995dfd1   bitnami/kafka:latest              "/opt/bitnami/script…"   25 seconds ago   Up 15 seconds   0.0.0.0:9093->9093/tcp, :::9093->9093/tcp, 9092/tcp, 0.0.0.0:29093->29093/tcp, :::29093->29093/tcp   kafka-broker2
+b5035f835bf7   bitnami/zookeeper:latest          "/opt/bitnami/script…"   29 seconds ago   Up 25 seconds   2888/tcp, 3888/tcp, 0.0.0.0:2181->2181/tcp, :::2181->2181/tcp, 8080/tcp                              zookeeper
+devmittal@Devs-MacBook-Air ExerciseFiles % docker container stop kafka-broker3
+kafka-broker3
+devmittal@Devs-MacBook-Air ExerciseFiles % docker container start kafka-broker3
+kafka-broker3
+devmittal@Devs-MacBook-Air ExerciseFiles % 
