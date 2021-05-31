@@ -1,0 +1,17 @@
+devmittal@Devs-MacBook-Air ~ % cd Documents/Ex_Files_Apache_Kafka_EssT/ExerciseFiles
+devmittal@Devs-MacBook-Air ExerciseFiles % docker-compose -f kafka-cluster.yml up -d
+Docker Compose is now in the Docker CLI, try `docker compose up`
+
+zookeeper is up-to-date
+kafka-broker1 is up-to-date
+kafka-broker3 is up-to-date
+kafka-broker2 is up-to-date
+kafdrop is up-to-date
+devmittal@Devs-MacBook-Air ExerciseFiles % docker ps
+CONTAINER ID   IMAGE                             COMMAND                  CREATED         STATUS         PORTS                                                                                                NAMES
+492c830111a8   obsidiandynamics/kafdrop:latest   "/kafdrop.sh"            9 minutes ago   Up 9 minutes   0.0.0.0:9000->9000/tcp, :::9000->9000/tcp                                                            kafdrop
+582ed38441a7   bitnami/kafka:latest              "/opt/bitnami/script…"   9 minutes ago   Up 9 minutes   0.0.0.0:9092->9092/tcp, :::9092->9092/tcp, 0.0.0.0:29092->29092/tcp, :::29092->29092/tcp             kafka-broker1
+13bb1f6e1ee6   bitnami/kafka:latest              "/opt/bitnami/script…"   9 minutes ago   Up 9 minutes   0.0.0.0:9094->9094/tcp, :::9094->9094/tcp, 9092/tcp, 0.0.0.0:29094->29094/tcp, :::29094->29094/tcp   kafka-broker3
+b5d642a7ad42   bitnami/kafka:latest              "/opt/bitnami/script…"   9 minutes ago   Up 9 minutes   0.0.0.0:9093->9093/tcp, :::9093->9093/tcp, 9092/tcp, 0.0.0.0:29093->29093/tcp, :::29093->29093/tcp   kafka-broker2
+b8310fa396fd   bitnami/zookeeper:latest          "/opt/bitnami/script…"   9 minutes ago   Up 9 minutes   2888/tcp, 3888/tcp, 0.0.0.0:2181->2181/tcp, :::2181->2181/tcp, 8080/tcp                              zookeeper
+devmittal@Devs-MacBook-Air ExerciseFiles % 
