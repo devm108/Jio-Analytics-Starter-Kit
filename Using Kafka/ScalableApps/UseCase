@@ -1,3 +1,0 @@
-Create topic kafka.usecase.students; Partitions=3; RF=2 
-Create Java Producer; BatchSize=32; Acks=ALL; Publish Async with call back
-Create Java Consumer; Fetch.max.bytes=20; Fetch.max.wait.ms=200; Asynchronous commit
